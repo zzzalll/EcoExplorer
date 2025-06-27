@@ -1,0 +1,185 @@
+</html><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script defer src="gallery.js"></script>
+	<script defer src="quiz4.js"></script>
+	<title>EcoExplorer</title>
+</head>
+<body>
+	<header class="header">
+		<a href="index.html" title="Home" class="logo"><img src="home/logo.png"></a>
+		<nav class="navbar">
+			<a href="lesson1.html" title="Lesson 1">1</i></a>
+			<a href="lesson2.html" title="Lesson 2">2</i></a>
+			<a href="lesson3.html" title="Lesson 3">3</i></a>
+			<a href="lesson4.html" title="Lesson 4">4</i></a>
+			<a href="index.html" title="Home"><i class='bx bxs-home-alt-2' ></i></i></a>
+		</nav>
+	</header>
+
+	<section class="objective" id="objective">
+		<h3>Lesson 4: </h3>
+		<h2 class="heading">Case Study – Lumut, Perak & What We Found</h2>
+		<div class="lesson-container">
+			<h2 class="title">Objectives</h2>
+		<ul>
+			<li>Describe the study area (Taman Paya Bakau) and its significance</li>
+			<li>Summarize the timeline, data sources, and methods used (1990, 2000, 2017)</li>
+			<li>Interpret key findings on mangrove loss, health changes, and drivers</li>
+			<li>Explain how these insights guide local conservation and restoration actions</li>
+		</ul>
+		</div>
+	</section>
+
+  <section class="spotlight4">
+    <h2 class="heading">Spotlight on Taman Paya Bakau, Lumut</h2>
+    <div class="split">
+      <div class="map">
+        <img src="mangrove/map.jpg" alt="Manjung District Map">
+        <h2>Map of Manjung District highlighting Taman Paya Bakau</h2>
+      </div>
+      <div class="lesson-container2">
+        <ul>
+          <li><strong>Location:</strong> Urban-fringe park between Lumut town and Bandar Seri Manjung, Perak.</li>
+          <li><strong>Size:</strong> ~200 ha of continuous mangrove forest, boardwalks, and educational trails.</li>
+          <li><strong>Why it matters:</strong>
+            <ul>
+              <li>Only coastal mangrove park fully managed by Manjung Municipal Council.</li>
+              <li>Live classroom for students, NGOs, eco-tourism, and community planting programs.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="data-methods">
+    <h2 class="heading">Data & Methods Recap</h2>
+    <table class="data-methods-table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Satellite & Sensor</th>
+          <th>Key Processing Steps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1990</td>
+          <td>Landsat-5 TM (30 m)</td>
+          <td>Geometric & radiometric correction → NDVI → supervised classification</td>
+        </tr>
+        <tr>
+          <td>2000</td>
+          <td>Landsat-7 ETM+ (30 m)</td>
+          <td>Cloud masking → index stacking → unsupervised classification</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Landsat-8 OLI (30 m) & RapidEye (5 m)</td>
+          <td>High-res mosaic → NDVI trend analysis → change detection</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="lesson-container3">
+    	<p>
+	      <strong>GIS Platforms:</strong> ArcGIS Pro for map layouts; Google Earth Engine for batch processing and NDVI time series.<br>
+	      <strong>Ground Truth:</strong> GPS points and on-site health surveys in 2018–19 to validate classification accuracy (±5 % error).
+	    </p>
+    </div>
+  </section>
+
+  <section class="findings">
+    <h2 class="heading">What We Found</h2>
+    <div class="split">
+    <div class="lesson-container3">
+    	<h3>1. Extent Changes</h3>
+	    <ul>
+	      <li>Total mangrove loss (1990→2017): 15 ha (7.5 % of park)</li>
+	      <li>Hotspots of deforestation:
+	        <ul>
+	          <li>Southern edge near port expansion</li>
+	          <li>Northern fringe by new coastal road</li>
+	        </ul>
+	      </li>
+	    </ul>
+	    <div class="chart">
+	      <img src="mangrove/changes.png" alt="Classified map 1990">
+	      <p>Changes of mangroves that occurred between 1990 and 2017 overlaid on GIS platform</p>
+	    </div>
+    </div>
+    <div class="lesson-container3">
+    	
+    	<h3>2. Health & Density Trends (NDVI)</h3>
+	    <ul>
+	      <li>Average NDVI drop: from 0.62 (1990) → 0.54 (2017)</li>
+	      <li>Recovery patches: small gains (+0.1 NDVI) in replanting zones (2010–15)</li>
+	      <li>Decline patches: steep NDVI fall (–0.15) near pollution discharge points</li>
+	    </ul>
+	    <div class="chart">
+	      <img src="mangrove/chart.png" alt="NDVI Trend Chart">
+	    </div>
+    </div>
+    </div>
+    <br>
+    <div class="lesson-container3">
+    	<h3>3. Key Drivers</h3>
+	    <ul>
+	      <li><strong>Coastal Development:</strong> Port facilities & road widening encroaching on mangroves</li>
+	      <li><strong>Pollution:</strong> Runoff from urban areas boosting salinity & chemicals</li>
+	      <li><strong>Natural Disturbance:</strong> Monsoon storms (2005, 2014) uprooting trees in seaward zone</li>
+	    </ul>
+    </div>
+  </section>
+
+  <section class="actions">
+    <h2 class="heading">From Data to Decisions</h2>
+    <div class="lesson-container3">
+    	<ul>
+	      <li><strong>Protected Zones:</strong> 50 m buffer designated where no development is allowed.</li>
+	      <li><strong>Restoration Priorities:</strong> Replanting in northern fringe (NDVI 0.4–0.5).</li>
+	      <li><strong>Water Quality Monitoring:</strong> Monthly salinity & pollutant checks at discharge sites.</li>
+	      <li><strong>Community Engagement:</strong> “Adopt-a-Plot”—schools monitor 1 ha plots, record NDVI via apps.</li>
+	    </ul>
+    </div>
+    <p class="outcome">
+	      <strong>Outcome:</strong> Annual reports show a 3 ha net gain by 2020 in restored zones and rising community stewardship.
+	    </p>
+    
+  </section>
+
+
+	<section class="quiz" id="quiz-lesson4">
+    <div class="lesson-container2 quiz-container">
+      <h2 class="heading">Lesson 4 Quiz: What We Found in Lumut</h2>
+      <div id="question4"       class="quiz-question"></div>
+      <div id="answer-buttons4" class="answer-buttons"></div>
+      <button id="next-btn4" class="btn next-btn hidden">Next</button>
+    </div>
+    <div class="dyk">
+		<h2>End of Lessons. Thank you for learning with us!</h2>
+	</div>
+  </section>
+
+
+
+
+	<footer class="footer">
+	<div class="kolej">	
+		<h2><strong>Our faculties: </strong></h2><br>
+		<a href="https://fab.uitm.edu.my/"><h2>Fakulti Alam Bina</h2></a> <br>
+		<a href="https://fskm.uitm.edu.my/v5/index.php/en/home-3"><h2>Fakulti Sains Komputer & Matematik</h2></a>
+	</div>
+	<div class="uitm">
+		<h2><strong>Visit Us: </strong></h2><br>
+		<h2>Jalan Ilmu 1/1,<br>40450 Shah Alam,<br>Selangor</h2>
+		<h2>Universiti Teknologi MARA</h2>	
+	</div>
+	</footer>
+</body>
+</html>

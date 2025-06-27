@@ -1,0 +1,205 @@
+</html><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script defer src="gallery.js"></script>
+	<script defer src="quiz3.js"></script>
+	<title>EcoExplorer</title>
+</head>
+<body>
+	<header class="header">
+		<a href="index.html" title="Home" class="logo"><img src="home/logo.png"></a>
+		<nav class="navbar">
+			<a href="lesson1.html" title="Lesson 1">1</i></a>
+			<a href="lesson2.html" title="Lesson 2">2</i></a>
+			<a href="lesson3.html" title="Lesson 3">3</i></a>
+			<a href="lesson4.html" title="Lesson 4">4</i></a>
+			<a href="index.html" title="Home"><i class='bx bxs-home-alt-2' ></i></i></a>
+		</nav>
+	</header>
+
+	<section class="objective" id="objective">
+		<h3>Lesson 3: </h3>
+		<h2 class="heading">Remote Sensing 101 for Mangrove Mapping (Deep Dive)</h2>
+		<div class="lesson-container">
+			<h2 class="title">Objectives</h2>
+		<ul>
+			<li>Explain how different light bands reveal mangrove health</li>
+			<li>Use NDVI to gauge “greenness” from space</li>
+			<li>Name and demo key tools: Landsat, GIS, Google Earth Engine</li>
+			<li>Walk through a full satellite-to-map workflow step by step</li>
+		</ul>
+		</div>
+	</section>
+
+	 <section class="spectrum">
+    <h2 class="heading">“Seeing” Mangroves with Light: The Electromagnetic Spectrum</h2>
+    <div class="lesson-container3">
+    	<h2>1. Key Wavelengths</h2>
+    	<table class="spectrum-table">
+	      <thead>
+	        <tr>
+	          <th>Band</th>
+	          <th>Wavelength (µm)</th>
+	          <th>What It Shows</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr><td>Blue</td><td>0.45 – 0.52</td><td>Shallow water, sediment</td></tr>
+	        <tr><td>Green</td><td>0.53 – 0.61</td><td>Leaf pigments, human-visible</td></tr>
+	        <tr><td>Red</td><td>0.63 – 0.69</td><td>Chlorophyll absorption</td></tr>
+	        <tr><td>NIR</td><td>0.76 – 0.90</td><td>Cell structure reflectance</td></tr>
+	        <tr><td>SWIR</td><td>1.55 – 1.75</td><td>Moisture content, soil</td></tr>
+	      </tbody>
+	    </table>
+	    <p class="insight">
+	      <strong>Insight:</strong>  
+	      Healthy leaves absorb red light (for photosynthesis) but reflect a lot of NIR. Dead or sparse vegetation flips that ratio.
+	    </p>
+	    <h2>2. Resolution Types</h2>
+	    <ul>
+	      <li><strong>Spatial (detail):</strong> Landsat = 30 m pixels; PlanetScope = 3 m; RapidEye = 5 m.</li>
+	      <li><strong>Temporal (frequency):</strong> Landsat revisits every 16 days; Sentinel-2 every 5 days.</li>
+	      <li><strong>Spectral (bands):</strong> More bands → better material discrimination (e.g., SWIR to detect water stress).</li>
+	    </ul>
+	    <p class="analogy">
+	      <em>Analogy:</em> A 30 m pixel is like squinting from a skyscraper. A 3 m pixel feels like Google Street View.
+	    </p>
+    </div>
+  </section>
+
+  <section class="tools">
+    <h2 class="heading">Power Tools: Landsat + GIS + NDVI</h2>
+    <div class="split">
+	    <div class="lesson-container">
+	    	<h2>1. Landsat Satellites</h2>
+	    	<ul>
+		      <li>Landsat 5 TM, 7 ETM+, 8 OLI: A continuous record since 1984.</li>
+		      <li>Key strengths: Free access; 30 m resolution; multi-decade archive.</li>
+		    </ul>
+	    </div>
+	    <div class="lesson-container">
+	    	<h2>2. GIS & Google Earth Engine</h2>
+	    	    <ul>
+			      <li><strong>ArcGIS Pro / QGIS:</strong> Desktop mapping, advanced symbology, local processing.</li>
+			      <li><strong>Google Earth Engine (GEE):</strong> Cloud-based code for petabyte-scale analysis—no downloads, no limits.</li>
+			    </ul>
+	    </div>
+	</div>    
+	<figure class="code-snippet">
+		<pre>
+			// 1. Load Landsat 8 imagery over Lumut in 2017
+			var l8 = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
+			           .filterDate('2017-01-01','2017-12-31')
+			           .filterBounds(lumutBoundary)
+			           .median();
+
+			// 2. Compute NDVI
+			var ndvi = l8.normalizedDifference(['B5','B4']).rename('NDVI');
+
+			// 3. Visualize
+			Map.centerObject(lumutBoundary,12);
+			Map.addLayer(ndvi, {min:0, max:0.8, palette:['white','green']}, 'NDVI 2017');
+		</pre>
+		<figcaption>Sample GEE script snippet</figcaption>
+	</figure>
+	<div class="lesson-container">
+		<h2>3. NDVI: The Vegetation Health Meter</h2>
+		<p class="formula">
+	      NDVI = <span class="frac"><sup>NIR – Red</sup>&frasl;<sub>NIR + Red</sub></span>
+	    </p>
+	    <ul>
+	      <li>Range: –1 (water, clouds) → +1 (lush vegetation)</li>
+	      <li>0.6 → healthy, dense canopy</li>
+	      <li>0.3–0.6 → moderate cover</li>
+	      <li>&lt; 0.3 → sparse or stressed vegetation</li>
+	    </ul>
+	</div>
+  </section>
+
+  <section class="workflow">
+    <h2 class="heading">Full Workflow: From Raw Pixels to Mangrove Map</h2>
+    <div class="split3">
+    	
+    	<div class="lesson-container2">
+    		<strong>1. Data Acquisition:</strong> Download Landsat scenes (1990, 2000, 2017) from USGS EarthExplorer
+    	</div>
+    	<div class="lesson-container2">
+	      	<strong>2. Preprocessing:</strong>
+	        <ul>
+	          <li>Geometric Correction: align pixels to accurate coordinates.</li>
+	          <li>Atmospheric Correction: remove haze (e.g., Dark Object Subtraction).</li>
+	          <li>Cloud Masking: filter out clouds/shadows with quality bands.</li>
+	        </ul>
+	    </div>	  
+    	
+    	<div class="lesson-container2">
+    		<strong>3. Index Calculation:</strong> Compute NDVI for each year; stack into a time series
+    	</div>
+    	<div class="lesson-container2">
+    		<strong>4. Classification:</strong>
+    		<ul>
+		        <li>Supervised: train with known mangrove/non-mangrove points.</li>
+	         	<li>Unsupervised: cluster pixels by spectral similarity, then label.</li>
+	        </ul>
+    	</div>	
+    	<div class="lesson-container2">
+    		<strong>5. Change Detection:</strong>
+    		<ul>
+	          <li>Subtract NDVI(1990) from NDVI(2017) → map gain vs. loss.</li>
+	          <li>Or post-classification compare classified maps and count lost pixels.</li>
+	        </ul>
+    	</div>
+    	
+    	<div class="lesson-container2">
+    		<strong>6. Post-Processing & Validation:</strong>
+    		<ul>
+	          <li>Smooth small misclassified patches.</li>
+	          <li>Ground-truth with GPS surveys or drone photos.</li>
+	        </ul>
+    	</div>
+    	<div class="lesson-container2">
+    		<strong>7. Visualization & Reporting:</strong>
+    		<li>Maps, charts, histograms; actionable recommendations.</li>
+    	</div>
+    </div>
+    
+    <p class="tip"><strong>Tip:</strong> Automate repetitive tasks with Python/ArcPy or GEE scripts for consistency.</p>
+  </section>
+
+
+
+  <section class="quiz" id="quiz-lesson3">
+    <div class="lesson-container2 quiz-container">
+      <h2 class="heading">Lesson 3 Quiz: Remote Sensing for Mangrove Mapping</h2>
+      <div id="question3"       class="quiz-question"></div>
+      <div id="answer-buttons3" class="answer-buttons"></div>
+      <button id="next-btn3" class="btn next-btn hidden">Next</button>
+    </div>
+    <div class="dyk">
+		<h2>Coming Up Next</h2><br>
+		<h3>In Lesson 4, we’ll apply this entire process to Lumut, Perak—revealing real change maps, uncovering drivers of mangrove loss, and brainstorming on-the-ground solutions!</h3><br>
+		<a href="lesson4.html" class="btn">Next Lesson</a>
+	</div>
+  </section>
+
+
+
+	<footer class="footer">
+	<div class="kolej">	
+		<h2><strong>Our faculties: </strong></h2><br>
+		<a href="https://fab.uitm.edu.my/"><h2>Fakulti Alam Bina</h2></a> <br>
+		<a href="https://fskm.uitm.edu.my/v5/index.php/en/home-3"><h2>Fakulti Sains Komputer & Matematik</h2></a>
+	</div>
+	<div class="uitm">
+		<h2><strong>Visit Us: </strong></h2><br>
+		<h2>Jalan Ilmu 1/1,<br>40450 Shah Alam,<br>Selangor</h2>
+		<h2>Universiti Teknologi MARA</h2>	
+	</div>
+	</footer>
+</body>
+</html>
